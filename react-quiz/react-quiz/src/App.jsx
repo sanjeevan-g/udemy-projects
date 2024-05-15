@@ -1,11 +1,18 @@
 import { useEffect, useReducer } from "react";
-import Header from "./Header";
-import Main from "./Main";
+import Header from "./components/Header";
+import Main from "./components/MainDiv";
+import Loader from "./components/Loader";
+import Error from "./components/Error";
+import StartScreen from "./components/StartScreen";
+import Question from "./components/Question";
 
 const initialState = {
   questions: [],
-  // loading, error, ready, finished
+  // loading, error, ready, active, finished
   status: "loading",
+  index: 0,
+  answer: null,
+  points: 0,
 };
 
 async function fetchWithTimeout(url, duration = 2000) {
@@ -46,6 +53,23 @@ function reducer(state, action) {
         ...state,
         status: "error",
       };
+    case "start":
+      return {
+        ...state,
+        status: "active",
+      };
+    case "newAnswer": {
+      const question = state.questions.at(state.index);
+
+      return {
+        ...state,
+        answer: action.payload,
+        points:
+          action.payload === question.correctOption
+            ? state.points + question.points
+            : state.points,
+      };
+    }
 
     default:
       throw new Error("action unknown");
@@ -53,7 +77,12 @@ function reducer(state, action) {
 }
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [{ status, questions, index, answer }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
+
+  const numQuestions = questions.length;
 
   useEffect(() => {
     fetchWithTimeout("http://localhost:3005/questions")
@@ -76,9 +105,18 @@ function App() {
     <div className="app">
       <Header />
       <Main>
-        <p>{state.status}</p>
-        <p>1/15</p>
-        <p>Questions ?</p>
+        {status === "loading" && <Loader />}
+        {status === "error" && <Error />}
+        {status === "ready" && (
+          <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
+        )}
+        {status === "active" && (
+          <Question
+            question={questions[index]}
+            dispatch={dispatch}
+            answer={answer}
+          />
+        )}
       </Main>
     </div>
   );
