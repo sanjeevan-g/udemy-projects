@@ -2,7 +2,7 @@
 export default function Options({ question, dispatch, answer }) {
   // answer => options choose
   const hasAnswered = answer !== null;
-  console.log(hasAnswered);
+  // console.log(hasAnswered);
 
   return (
     <div className="options">
