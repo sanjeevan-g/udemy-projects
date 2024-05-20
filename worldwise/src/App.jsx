@@ -1,5 +1,24 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import PageNotFound from "./pages/PageNotFound";
+import Pricing from "./pages/Pricing";
+import Product from "./pages/Product";
+import PageNav from "./components/PageNav";
+
 function App() {
-  return <h1>World wise!</h1>;
+  return (
+    <>
+      <BrowserRouter>
+        <PageNav />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;
