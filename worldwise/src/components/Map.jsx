@@ -13,7 +13,7 @@ export default function Map() {
     <div className={ styles.mapContainer } onClick={() => navigate("form")}>
       <h1>Map</h1>
       <h1>position { lat }, { lng } </h1>
-      <button onClick={ () => setSearchParam({ lat: 50, lng: 100 }) }>Change query</button>
+      <button onClick={ (e) => { e.stopPropagation(); setSearchParam({ lat: 50, lng: 100 })} }>Change query</button>
     </div>
   )
 }

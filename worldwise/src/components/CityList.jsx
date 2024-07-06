@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
+import { useCities } from '../contexts/CitiesContext'
 import CityItem from './CityItem'
 import styles from './CityList.module.css'
 import Message from './Message'
 import Spinner from './Spinner'
 
-export default function CityList({isLoading, cities}) {
+export default function CityList() {
+
+    const {isLoading, cities} = useCities();
 
     if(isLoading) return <Spinner />
 
