@@ -26,14 +26,22 @@ export default function CityItem({ city }) {
         },
         "id"*/
     const { cityName, emoji, date,id, position } = city;
-    const {currentCity} = useCities();
+    const {currentCity, deleteCity} = useCities();
+    // console.log(currentCity);
+
+    function handleDelete(e) {
+        e.preventDefault();
+        deleteCity(id)
+    }
     return (
         <li >
             <Link className={ `${styles.cityItem} ${ currentCity.id === id ? `${styles['cityItem--active']}` : '' }` } to={`${id}?lat=${position.lat}&lng=${position.lng}`} >
-                <span className={ styles.emoji }>{ emoji }</span>
+                <span className={ styles.emoji }>
+                    <img src={`https://flagcdn.com/24x18/${emoji.toLowerCase()}.png`} alt="" />
+                </span>
                 <h3 className={ styles.name }>{ cityName }</h3>
                 <time className={ styles.date }>({ formatDate(date) })</time>
-                <button className={ styles.deleteBtn }>&times;</button>
+                <button onClick={handleDelete } className={ styles.deleteBtn }>&times;</button>
             </Link>
         </li>
     )

@@ -32,7 +32,8 @@ function City() {
       <div className={ styles.row }>
         <h6>City name</h6>
         <h3>
-          <span>{ emoji }
+          <span>
+            <img src={`https://flagcdn.com/24x18/${emoji?.toLowerCase()}.png`} alt="" />
           </span> { cityName }
         </h3>
       </div>
