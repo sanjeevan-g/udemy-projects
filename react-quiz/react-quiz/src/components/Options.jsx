@@ -1,10 +1,9 @@
 import { useQuiz } from "../context/QuizContext";
 
 /* eslint-disable react/prop-types */
-export default function Options() {
+export default function Options({ question }) {
 
-  const { dispatch, answer, index, questions } = useQuiz();
-  const question = questions[index]
+  const { dispatch, answer } = useQuiz();
   // answer => options choose
   const hasAnswered = answer !== null;
   // console.log(hasAnswered);

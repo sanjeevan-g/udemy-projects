@@ -12,7 +12,7 @@ import Timer from "./components/Timer";
 import { useQuiz } from "./context/QuizContext";
 
 function App() {
-  const { status, questions, index, answer, points, highscore, secondsRemaining, dispatch, numQuestions, maxPossiblePoints } = useQuiz();
+  const { status } = useQuiz();
 
 
   return (
@@ -27,28 +27,15 @@ function App() {
         { status === "active" && (
           <>
             <Progress />
-            <Question
-              question={ questions[index] }
-              dispatch={ dispatch }
-              answer={ answer }
-            />
+            <Question />
             <Footer>
-              <Timer dispatch={ dispatch } secondsRemaining={ secondsRemaining } />
-              <NextButton
-                answer={ answer }
-                dispatch={ dispatch }
-                index={ index }
-                numQuestions={ numQuestions }
-              />
+              <Timer  />
+              <NextButton />
             </Footer>
           </>
         ) }
         { status === "finished" && (
           <FinishedScreen
-            points={ points }
-            maxPossiblePoints={ maxPossiblePoints }
-            highscore={ highscore }
-            dispatch={ dispatch }
           />
         ) }
       </Main>
