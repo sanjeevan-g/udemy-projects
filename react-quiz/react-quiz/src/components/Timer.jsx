@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import { useQuiz } from "../context/QuizContext";
 
 /* eslint-disable react/prop-types */
-export default function Timer({ dispatch, secondsRemaining }) {
+export default function Timer() {
+  const { dispatch, secondsRemaining } = useQuiz();
   const minutes = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
   useEffect(() => {
@@ -15,9 +17,9 @@ export default function Timer({ dispatch, secondsRemaining }) {
   }, [dispatch]);
   return (
     <div className="timer">
-      {minutes < 10 && "0"}
-      {minutes} : {seconds < 10 && "0"}
-      {seconds}
+      { minutes < 10 && "0" }
+      { minutes } : { seconds < 10 && "0" }
+      { seconds }
     </div>
   );
 }
