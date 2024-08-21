@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useCallback, useContext, useEffect, useReducer } from "react";
 
 const BASE_URL = "http://localhost:4200";
 
@@ -69,7 +69,7 @@ const initialState = {
 
 export function CitiesProvider({ children }) {
 
-    const [{ cities, isLoading, currentCity,error }, dispatch] = useReducer(reducer, initialState)
+    const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(reducer, initialState)
 
     // const [cities, setCities] = useState([]);
     // const [isLoading, setIsLoading] = useState(false);
@@ -98,29 +98,30 @@ export function CitiesProvider({ children }) {
         fetchCities();
     }, []);
 
-    async function getCity(id) {
+    const getCity = useCallback(
+        async function getCity(id) {
 
-        // if request for same current city
-        // console.log(id, currentCity.id, (id) == currentCity.id)
-        if (id == currentCity.id) return;
-        
+            // if request for same current city
+            // console.log(id, currentCity.id, (id) == currentCity.id)
+            if (id == currentCity.id) return;
 
-        dispatch({ type: "loading" });
-        try {
-            const res = await fetch(`${BASE_URL}/cities/${id}`);
-            const data = await res.json();
-            dispatch({
-                type: "city_loaded",
-                payload: data
-            })
+            dispatch({ type: "loading" });
+            try {
+                const res = await fetch(`${BASE_URL}/cities/${id}`);
+                const data = await res.json();
+                dispatch({
+                    type: "city_loaded",
+                    payload: data
+                })
 
-        } catch (e) {
-            dispatch({
-                type: "rejected",
-                payload: "there was an error fetching...."
-            })
-        }
-    }
+            } catch (e) {
+                dispatch({
+                    type: "rejected",
+                    payload: "there was an error fetching...."
+                })
+            }
+        },
+        [currentCity.id])
 
     async function createCity(newCity) {
         dispatch({ type: "loading" });
