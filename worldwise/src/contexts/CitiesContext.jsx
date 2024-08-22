@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { createContext, useCallback, useContext, useEffect, useReducer } from "react";
 
-const BASE_URL = "http://localhost:4200";
+// const BASE_URL = "http://localhost:4200";
+const BASE_URL = "./api"
 
 const CitiesContext = createContext();
 
