@@ -1,12 +1,8 @@
 import fs from "fs";
 import path from "path";
 
-const filePath = path.join(process.cwd(), "public", "cities.json");
-// console.log(filePath)
+const filePath = path.resolve("src/data/cities.json");
 const writePath = path.join("/tmp", "cities.json");
-
-const jsonData = fs.readFileSync(filePath, "utf8");
-console.log(jsonData)
 
 export default function handler(req, res) {
     const method = req.method;
@@ -15,7 +11,6 @@ export default function handler(req, res) {
     // Read the JSON file
     const readJsonFile = () => {
         const jsonData = fs.readFileSync(filePath, "utf8");
-        console.log(jsonData)
         return JSON.parse(jsonData);
     };
 
