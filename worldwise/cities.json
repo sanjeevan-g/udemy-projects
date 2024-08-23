@@ -1,0 +1,76 @@
+{
+  "cities": [
+    {
+      "cityName": "Berlin",
+      "country": "Germany",
+      "emoji": "DE",
+      "date": "2027-02-12T09:24:11.863Z",
+      "notes": "Amazing 😃",
+      "position": {
+        "lat": 52.53586782505711,
+        "lng": 13.376933665713324
+      },
+      "id": "98443197"
+    },
+    {
+      "id": "805b",
+      "cityName": "Bardallur",
+      "country": "Spain",
+      "emoji": "es",
+      "date": "2024-07-12T13:02:30.028Z",
+      "notes": "ttt",
+      "position": {
+        "lat": "41.6916380537994",
+        "lng": "-1.1614256152993163"
+      }
+    },
+    {
+      "id": "10aa",
+      "cityName": "Castrocalbon",
+      "country": "Spain",
+      "emoji": "es",
+      "date": "2024-07-15T06:55:09.651Z",
+      "notes": "hello",
+      "position": {
+        "lat": "42.18170486317722",
+        "lng": "-6.064453125000001"
+      }
+    },
+    {
+      "id": "23c4",
+      "cityName": "Mogadouro",
+      "country": "Portugal",
+      "emoji": "pt",
+      "date": "2024-07-15T13:02:58.720Z",
+      "notes": "hello",
+      "position": {
+        "lat": "41.36487852784101",
+        "lng": "-6.564331054687501"
+      }
+    },
+    {
+      "id": "d0d9",
+      "cityName": "Namakkal",
+      "country": "India",
+      "emoji": "in",
+      "date": "2024-07-15T13:11:01.594Z",
+      "notes": "",
+      "position": {
+        "lat": "11.251628205534198",
+        "lng": "78.09082031250001"
+      }
+    },
+    {
+      "id": "4e3b",
+      "cityName": "Paramathi Velur",
+      "country": "India",
+      "emoji": "in",
+      "date": "2024-07-15T14:23:49.385Z",
+      "notes": "",
+      "position": {
+        "lat": "11.185149623539763",
+        "lng": "77.88379669189455"
+      }
+    }
+  ]
+}
