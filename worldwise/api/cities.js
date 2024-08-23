@@ -89,9 +89,10 @@ export default function handler(req, res) {
 
     // Read the JSON file
     const readJsonFile = () => {
-        // const jsonData = fs.readFileSync(filePath, "utf8");
-        const jsonData = initData;
-        return jsonData
+        const jsonData = fs.readFileSync(filePath, "utf8");
+        // const jsonData = initData;
+        // return jsonData
+        return JSON.parse(jsonData);
     };
 
     // Write to the JSON file
