@@ -1,12 +1,14 @@
 import fs from "fs";
 import path from "path";
 
-const filePath = path.resolve("src/data/cities.json");
-const writePath = path.join("/tmp", "cities.json");
 
 export default function handler(req, res) {
+
     const method = req.method;
     const { id } = req.query;
+
+    const filePath = path.join(process.cwd(), "src/data/cities.json");
+    const writePath = path.join("/tmp", "cities.json");
 
     // Read the JSON file
     const readJsonFile = () => {
