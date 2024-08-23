@@ -1,13 +1,8 @@
 {
-    // "rewrites": [
-    //     {
-    //         "source": "/(.*)",
-    //         "destination": "/index.html"
-    //     }
-    // ],
-    "functions": {
-        "api/cities.js": {
-            "includeFiles": "src/data/cities.json"
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
-    }
+    ]
 }
