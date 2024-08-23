@@ -60,15 +60,15 @@ export default function handler(req, res) {
     const method = req.method;
     const { id } = req.query;
 
-    const filePath = path.resolve("cities.json");
+    // const filePath = path.resolve("cities.json");
     const writePath = path.join("/tmp", "cities.json");
 
     // Read the JSON file
     const readJsonFile = () => {
-        const jsonData = fs.readFileSync(filePath, "utf8");
-        return JSON.parse(jsonData);
-        // const jsonData = initData;
-        // return jsonData
+        // const jsonData = fs.readFileSync(filePath, "utf8");
+        // return JSON.parse(jsonData);
+        const jsonData = initData;
+        return jsonData
     };
 
     // Write to the JSON file
