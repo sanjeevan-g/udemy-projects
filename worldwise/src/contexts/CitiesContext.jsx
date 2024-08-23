@@ -12,7 +12,7 @@ const citiesContext = createContext();
 const initialState = {
     cities: [],
     isLoading: false,
-    curCity: {},
+    currentCity: {},
     errorMsg: "",
 };
 
@@ -23,12 +23,12 @@ function reducer(state, action) {
         case "cities/loaded":
             return { ...state, cities: action.payLoad, isLoading: false };
         case "city/loaded":
-            return { ...state, curCity: action.payLoad, isLoading: false };
+            return { ...state, currentCity: action.payLoad, isLoading: false };
         case "city/created":
             return {
                 ...state,
                 cities: [...state.cities, action.payLoad],
-                curCity: action.payLoad,
+                currentCity: action.payLoad,
                 isLoading: false,
             };
         case "city/deleted":
@@ -45,7 +45,7 @@ function reducer(state, action) {
 }
 
 function CitiesProvider({ children }) {
-    const [{ cities, isLoading, curCity, errorMsg }, dispatch] = useReducer(
+    const [{ cities, isLoading, currentCity, errorMsg }, dispatch] = useReducer(
         reducer,
         initialState
     );
@@ -122,7 +122,7 @@ function CitiesProvider({ children }) {
             value={ {
                 cities,
                 isLoading,
-                curCity,
+                currentCity,
                 getCity,
                 createCity,
                 deleteCity,
