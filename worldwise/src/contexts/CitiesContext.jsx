@@ -2,7 +2,7 @@
 import { createContext, useCallback, useContext, useEffect, useReducer } from "react";
 
 // const BASE_URL = "http://localhost:4200";
-const BASE_URL = "./api"
+const BASE_URL = "https://worldwise-one-tau.vercel.app/api"
 
 const CitiesContext = createContext();
 
