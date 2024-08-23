@@ -50,30 +50,6 @@ const initData = {
                 "lat": "41.36487852784101",
                 "lng": "-6.564331054687501"
             }
-        },
-        {
-            "id": "d0d9",
-            "cityName": "Namakkal",
-            "country": "India",
-            "emoji": "in",
-            "date": "2024-07-15T13:11:01.594Z",
-            "notes": "",
-            "position": {
-                "lat": "11.251628205534198",
-                "lng": "78.09082031250001"
-            }
-        },
-        {
-            "id": "4e3b",
-            "cityName": "Paramathi Velur",
-            "country": "India",
-            "emoji": "in",
-            "date": "2024-07-15T14:23:49.385Z",
-            "notes": "",
-            "position": {
-                "lat": "11.185149623539763",
-                "lng": "77.88379669189455"
-            }
         }
     ]
 }
@@ -84,15 +60,15 @@ export default function handler(req, res) {
     const method = req.method;
     const { id } = req.query;
 
-    const filePath = path.join(process.cwd(), "api", "cities.json");
+    // const filePath = path.join(process.cwd(), "src/data", "cities.json");
     const writePath = path.join("/tmp", "cities.json");
 
     // Read the JSON file
     const readJsonFile = () => {
-        const jsonData = fs.readFileSync(filePath, "utf8");
-        // const jsonData = initData;
-        // return jsonData
-        return JSON.parse(jsonData);
+        // const jsonData = fs.readFileSync(filePath, "utf8");
+        const jsonData = initData;
+        return jsonData
+        // return JSON.parse(jsonData);
     };
 
     // Write to the JSON file
