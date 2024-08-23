@@ -84,7 +84,7 @@ export default function handler(req, res) {
     const method = req.method;
     const { id } = req.query;
 
-    const filePath = path.join(process.cwd(), "src/data", "cities.json");
+    const filePath = path.join(process.cwd(), "api", "cities.json");
     const writePath = path.join("/tmp", "cities.json");
 
     // Read the JSON file
