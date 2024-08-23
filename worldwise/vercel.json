@@ -7,7 +7,7 @@
     ],
     "functions": {
         "api/cities.js": {
-            "includeFiles": "src/data/cities.json"
+            "includeFiles": "cities.json"
         }
     }
 }
