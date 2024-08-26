@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const filePath = path.join(process.cwd(), "src/data", "cities.json");
+const filePath = path.join(process.cwd(), "src", "data", "cities.json");
 const writePath = path.join("/tmp", "cities.json");
 
 export default function handler(req, res) {
@@ -37,13 +37,14 @@ export default function handler(req, res) {
                     res.status(200).json(jsonData);
                 }
                 break;
-            case "POST":{
+            case "POST": {
                 // Create a new city
                 const newCity = req.body;
                 jsonData.cities.push(newCity);
                 writeJsonFile(jsonData);
                 res.status(201).json(newCity);
-                break;}
+                break;
+            }
             case "DELETE":
                 if (id) {
                     // Delete a city by ID
