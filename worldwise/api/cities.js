@@ -1,16 +1,21 @@
 import fs from "fs";
 import path from "path";
 
-const filePath = path.join(__dirname, "src", "data", "cities.json");
+// const filePath = path.join(process.cwd(), "./src", "data", "cities.json");
 const writePath = path.join("/tmp", "cities.json");
 
 export default function handler(req, res) {
     const method = req.method;
     const { id } = req.query;
 
+    const fileDir = path.resolve("./public", "data");
+
+    const dataFiles = fs.readdirSync(fileDir);
+
     // Read the JSON file
     const readJsonFile = () => {
-        const jsonData = fs.readFileSync(filePath, "utf8");
+        let jsonData = dataFiles.map(() => path.join('/', "data", "cities.json"))
+        // const jsonData = fs.readFileSync(filePath, "utf8");
         return JSON.parse(jsonData);
     };
 
