@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { deposit, payLoan, requestLoan, widthdraw } from "./accountSlice";
+import { deposit, payLoan, requestLoan, withdraw } from "./accountSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -18,6 +18,7 @@ function AccountOperations() {
     if (!depositAmount) return;
 
     dispatch(deposit(depositAmount, currency));
+    // dispatch(deposit(depositAmount));
 
     setDepositAmount("")
     setCurrency('USD');
@@ -28,7 +29,7 @@ function AccountOperations() {
 
     // console.log(withdrawalAmount > balance, withdrawalAmount)
 
-    dispatch(widthdraw(withdrawalAmount));
+    dispatch(withdraw(withdrawalAmount));
 
     setWithdrawalAmount("")
   }
@@ -36,6 +37,11 @@ function AccountOperations() {
   function handleRequestLoan() {
     if (loanAmount == 0 || !loanPurpose) return;
 
+    // by default toolkit reducer accept only one argument
+    // so send it as object
+    // dispatch(requestLoan({amount: loanAmount, purpose : loanPurpose}));
+
+    // if we need to pass more than 1 value then use 'prepare method' in the reducer
     dispatch(requestLoan(loanAmount, loanPurpose));
 
     setLoanAmount("")
